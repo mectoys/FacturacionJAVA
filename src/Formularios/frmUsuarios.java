@@ -45,9 +45,10 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
         BtnSiguiente = new javax.swing.JButton();
         btnBorrar = new javax.swing.JButton();
         btnNuevo = new javax.swing.JButton();
-        bntModificar = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -65,7 +66,7 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Confirmación :");
 
-        jLabel6.setText("Confirmación :");
+        jLabel6.setText("Perfil :");
 
         CmbPerfil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione un Perfil", "Administrador", "Empleado" }));
         CmbPerfil.setEnabled(false);
@@ -83,9 +84,14 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
 
         btnNuevo.setText("Nuevo");
         btnNuevo.setToolTipText("Crea un Nuevo Registro");
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
+            }
+        });
 
-        bntModificar.setText("Modificar");
-        bntModificar.setToolTipText("Modifica el registro Actual");
+        btnModificar.setText("Modificar");
+        btnModificar.setToolTipText("Modifica el registro Actual");
 
         btnGuardar.setText("Guardar");
         btnGuardar.setToolTipText("Guarda los Cambios");
@@ -93,6 +99,10 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
 
         btnBuscar.setText("buscar");
         btnBuscar.setToolTipText("Busca el registro actual");
+
+        btnCancelar.setText("Cancelar");
+        btnCancelar.setToolTipText("Busca el registro actual");
+        btnCancelar.setEnabled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -122,23 +132,13 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel6)
                         .addGap(18, 18, 18)
-                        .addComponent(CmbPerfil, 0, 150, Short.MAX_VALUE)
+                        .addComponent(CmbPerfil, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(10, 10, 10))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(TxtNombres)
                         .addGap(148, 148, 148))))
             .addGroup(layout.createSequentialGroup()
-                .addComponent(btnNuevo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(4, 4, 4)
-                .addComponent(bntModificar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnBorrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
+                .addGap(92, 92, 92)
                 .addComponent(BtnPrimero)
                 .addGap(4, 4, 4)
                 .addComponent(BtnUltimo)
@@ -146,7 +146,21 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
                 .addComponent(BtnAnterior)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BtnSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnModificar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnGuardar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnBorrar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,18 +191,36 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
                     .addComponent(BtnUltimo)
                     .addComponent(BtnAnterior)
                     .addComponent(BtnSiguiente))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnNuevo)
-                    .addComponent(bntModificar)
-                    .addComponent(btnGuardar)
-                    .addComponent(btnBorrar)
-                    .addComponent(btnBuscar))
-                .addContainerGap())
+                    .addComponent(btnNuevo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnBorrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(47, 47, 47))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+      
+        BtnPrimero.setEnabled(false);
+        BtnAnterior.setEnabled(false);
+        BtnSiguiente.setEnabled(false);
+        BtnUltimo.setEnabled(false);
+        btnNuevo.setEnabled(false);
+        btnModificar.setEnabled(false);
+        btnBorrar.setEnabled(false);
+        btnBuscar.setEnabled(false);
+        btnCancelar.setEnabled(false);
+        
+                
+                
+        
+    }//GEN-LAST:event_btnNuevoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -202,10 +234,11 @@ public class frmUsuarios extends javax.swing.JInternalFrame {
     private javax.swing.JPasswordField TxtConfirmacion;
     private javax.swing.JTextField TxtIdUsuario;
     private javax.swing.JTextField TxtNombres;
-    private javax.swing.JButton bntModificar;
     private javax.swing.JButton btnBorrar;
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnNuevo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
