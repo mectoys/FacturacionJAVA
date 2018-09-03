@@ -17,9 +17,12 @@ public class FacturacionJAVA {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        
+        // creo el objeto Datos
+        Datos misDatos= new Datos();
+       
+        //Llamamos el formulario de login
         frmLogin miLogin = new frmLogin();
+        miLogin.setDatos(misDatos);
         miLogin.setLocationRelativeTo(null);
         miLogin.setVisible(true);
     }

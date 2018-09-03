@@ -14,10 +14,14 @@ import javax.swing.JOptionPane;
  * @author PC
  */
 public class frmLogin extends javax.swing.JFrame {
-
-    /**
-     * Creates new form frmLogin
-     */
+    
+    private Datos misDatos;
+    //metodo
+    public void setDatos(Datos misDatos)
+    {
+        this.misDatos= misDatos;
+    }
+    
     public frmLogin() {
         initComponents();
     }
@@ -123,7 +127,8 @@ public class frmLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-         Datos misDatos= new Datos();
+         
+         
          if (!misDatos.validarUsuario(TxtUser.getText(),
                  new String(TxtClave.getPassword()))) {
              JOptionPane.showMessageDialog(rootPane, "Usuario o Clave incorrecto");
@@ -134,6 +139,7 @@ public class frmLogin extends javax.swing.JFrame {
         }
          frmPrincipal miPrincipal= new frmPrincipal();
          this.setVisible(false);
+         miPrincipal.setDatos(misDatos);
          miPrincipal.setExtendedState(JFrame.MAXIMIZED_BOTH);
          miPrincipal.setVisible(true);
     }//GEN-LAST:event_btnAceptarActionPerformed
